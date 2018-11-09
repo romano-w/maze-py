@@ -27,10 +27,14 @@ public:
 			cout << "File not opened!" << endl;
 		}
 		while (getline(readFile, line)) {
-			cout << line << endl;
+			//cout << line << endl;
+			vector <char> thisLine;
 			for (int i = 0; i < line.length(); ++i) {
-				
+				thisLine.push_back(line[i]);
+				//mazeList[currentLine][i] = line[i];
+				//cout << line[i] << endl;
 			}
+			mazeList.push_back(thisLine);
 			currentLine++;
 		}
 		return;

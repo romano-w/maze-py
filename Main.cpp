@@ -15,7 +15,6 @@ private:
 public: 
 	Cave() {
 		cout << "Default constructor called" << endl;
-		// Add functionality here
 	}
 
 	void readMaze(string fileName) {

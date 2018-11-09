@@ -13,6 +13,10 @@ public:
 		cout << "Default constructor called" << endl;
 		// Add functionality here
 	}
+
+	void drawMaze() {
+		return;
+	}
 };
 
 int main() {

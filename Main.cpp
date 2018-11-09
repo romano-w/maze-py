@@ -20,21 +20,26 @@ public:
 
 	void readMaze(string fileName) {
 		string line;
-		ifstream readFile;
-		int currentLine = 0;
-		readFile.open(fileName);
-		if (!readFile.is_open()) {
-			cout << "File not opened!" << endl;
+		ifstream readFile (fileName);
+		int lineCount = 0;
+
+		if (!readFile.is_open()) {			// Checking for errors opening the file
+			perror("error while opening file");
 		}
-		while (getline(readFile, line)) {
+		while (getline(readFile, line)) {			// Reading file until the end is reached or an error occurs
 			vector <char> thisLine;
 			for (int i = 0; i < line.length(); ++i) {
 				thisLine.push_back(line[i]);
 			}
 			mazeVect.push_back(thisLine);
-			currentLine++;
+			lineCount++;
 		}
-		rows = mazeVect.size();
+
+		if (readFile.bad()) {						// More error checking
+			perror("error while reading file");
+		}
+
+		rows = mazeVect.size();			// Updating class attributes "rows" and "cols"
 		cols = mazeVect[0].size();
 		cout << "There are " + to_string(rows) + " rows, and " + to_string(cols) + " columns.\n\n";
 		return;

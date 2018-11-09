@@ -10,7 +10,7 @@ class Cave {
 private:
 	int rows = 0;
 	int cols = 0;
-	vector <vector <char>> mazeList;
+	vector <vector <char>> mazeVect;
 
 public: 
 	Cave() {
@@ -27,30 +27,37 @@ public:
 			cout << "File not opened!" << endl;
 		}
 		while (getline(readFile, line)) {
-			//cout << line << endl;
 			vector <char> thisLine;
 			for (int i = 0; i < line.length(); ++i) {
 				thisLine.push_back(line[i]);
-				//mazeList[currentLine][i] = line[i];
-				//cout << line[i] << endl;
 			}
-			mazeList.push_back(thisLine);
+			mazeVect.push_back(thisLine);
 			currentLine++;
 		}
+		rows = mazeVect.size();
+		cols = mazeVect[0].size();
+		cout << "There are " + to_string(rows) + " rows, and " + to_string(cols) + " columns.\n\n";
 		return;
 	}
 
-	void drawMaze() {
+	void printMaze() {
+		for (int i = 0; i < mazeVect.size(); i++) {
+			for (int j = 0; j < mazeVect[i].size(); j++) {
+				cout << mazeVect[i][j];
+			}
+			cout << endl;
+		}
+		cout << endl;
 		return;
 	}
 };
 
 int main() {
-	char endCin;
 	Cave myCave;
 	myCave.readMaze("cave.txt");
+	myCave.printMaze();
 
-	cout << "Press any key to exit..." << endl;
-	cin >> endCin;
+	cout << "Press Enter to exit...";
+	getchar();
 	return 0;
 };
